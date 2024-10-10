@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Annotate the function's parameters and return type"""
 
-from typing import List, Tuple, Sequence, Any
+from typing import List, Tuple, Sequence
 
 
 def element_length(lst: List[Sequence]) -> List[Tuple[Sequence, int]]:
