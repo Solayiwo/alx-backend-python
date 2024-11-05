@@ -17,3 +17,15 @@ class TestAccessNestedMap(unittest.TestCase):
     def test_access_nested_map(self, nested_map, path, expected):
         """Test for the function to returns the expected output."""
         self.assertEqual(access_nested_map(nested_map, path), expected)
+
+    @parameterized.expand([
+        ({}, ("a",), "a"),
+        ({"a": 1}, ("a", "b"), "b"),
+    ])
+    def test_access_nested_map_exception(self, nested_map, path, missing_key):
+        """Test for the function to raises a KeyError for invalid keys"""
+        with self.assertRaises(KeyError) as context:
+            access_nested_map(nested_map, path)
+
+        # Check if the missing key is in the exception message
+        self.assertEqual(str(context.exception), f"'{missing_key}'")
